@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSV_to_HTML_Draft</title>
+  </head>
+
+  <body>
+    <table id="csv-table"></table>
+
+    <script>
+      // fetch the CSV file using the Fetch API
+      fetch("opponents_2022.csv")
+        .then((response) => response.text())
+        .then((data) => {
+          // split the CSV data into rows
+          const rows = data.split("\n");
+          // get the headers from the first row
+          const headers = rows[0].split(",");
+
+          // get the table element by its ID
+          const table = document.getElementById("csv-table");
+
+          // create a table row for the headers
+          const headerRow = document.createElement("tr");
+          // add a table header cell for each header
+          headers.forEach((headerText) => {
+            const header = document.createElement("th");
+            header.appendChild(document.createTextNode(headerText));
+            headerRow.appendChild(header);
+          });
+          // add the header row to the table
+          table.appendChild(headerRow);
+
+          // loop through each row in the CSV data
+          for (let i = 1; i < rows.length; i++) {
+            // split the row into cells
+            const cells = rows[i].split(",");
+            // create a new table row
+            const row = document.createElement("tr");
+            // add a table cell for each cell in the row
+            for (let j = 0; j < headers.length; j++) {
+              const cell = document.createElement("td");
+              cell.appendChild(document.createTextNode(cells[j]));
+              row.appendChild(cell);
+            }
+            // add the row to the table
+            table.appendChild(row);
+          }
+        });
+    </script>
+  </body>
+</html>
