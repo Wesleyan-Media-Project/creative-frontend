@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Web Form 1</title>
+  </head>
+  <body>
+    <h1>Search Confirmation</h1>
+
+    <form onsubmit="return displayConfirmation(event)"> 
+      <!-- A part of dumb code to prevent the form from submitting -->
+
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="state">State:</label>
+      <input type="text" id="state" name="state" required>
+
+      <input type="submit" value="Search">
+    </form>
+
+    <div id="confirmation"></div>
+
+    <script>
+      function displayConfirmation(event) {
+        event.preventDefault(); 
+        // Prevent form from submitting. Although this makes the "search" useless. :(
+        // But for this code, as long as the user submit the form, the web will crash because I did not write
+        // anything for further action. Therefore, I used this dumb method to make sure the confirmation 
+        // can be displayed correctly.
+
+
+        // Get form data
+        const name = document.getElementById("name").value;
+        const state = document.getElementById("state").value;
+
+        // Display confirmation message
+        const confirmationMessage = `You are searching for the candidate: "${name}", from "${state}".`;
+        document.getElementById("confirmation").innerText = confirmationMessage;
+
+        // Clear form data
+        document.getElementById("name").value = "";
+        document.getElementById("state").value = "";
+
+        return false;
+      }
+    </script>
+  </body>
+</html>
