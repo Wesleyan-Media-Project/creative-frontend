@@ -24,9 +24,10 @@
       function displayConfirmation(event) {
         event.preventDefault(); 
         // Prevent form from submitting. Although this makes the "search" useless. :(
-        // But for this code, as long as the user submit the form, the web will crash because I did not write
-        // anything for further action. Therefore, I used this dumb method to make sure the confirmation 
-        // can be displayed correctly.
+        // Normally, as long as the user submit the form, the web will redirect to
+        // a server-side script located at "/search" using the "get" method. Since I did not write
+        // anything for further action. Therefore, I used this dumb method to prevent submission and
+        // make sure the confirmation can be displayed correctly.
 
 
         // Get form data
